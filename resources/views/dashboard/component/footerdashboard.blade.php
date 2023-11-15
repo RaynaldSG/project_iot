@@ -1,4 +1,5 @@
-<div class="align-items-end" style="">
+<br><br>
+<div class="align-items-end mt-4" style="min-height: 100%">
     <footer class="text-light pt-2" style="width: 100%">
         <div class="row mt-5 mx-0" style="width: 100%; background-image: linear-gradient(270deg, #e0c3fc 0%, #8ec5fc 100%)">
             <div class="col d-flex justify-content-center align-items-center m-0" style="width: 100%;">

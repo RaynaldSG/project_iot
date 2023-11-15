@@ -3,9 +3,9 @@
 @section('content')
     <div class="container d-flex justify-content-center align-items-center">
         <div class="row justify-content-center">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="d-flex justify-content-center">
-                    <img src="\assets\img\dashboard\profile.png" class="img-fluid" alt="profile.png">
+                    <img src="\assets\img\dashboard\profile.png" class="img-fluid"  style="width: 50%; border-radius: 50%" alt="profile.png">
                 </div>
                 <h5 class="text-center mt-2" style="font-weight: 700">PROFILE</h5>
                 <form action="/login" method="POST">
@@ -37,7 +37,7 @@
                                 {{ $message }}
                             @enderror
                         </div>
-                        <div class="container">
+                        <div class="container m-0 p-0">
                             <label for="image"
                                 class="form-label @error('image')
                                 is-invalid
@@ -48,12 +48,14 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                            @if (auth()->user()->image)
-                                <img src="{{ asset('storage/' . $post->image) }}" class="img-preview img-fluid">
-                            @else
-                                <img class="img-preview img-fluid" class="max-width:500px">
-                            @endif
-                            <input class="form-control" name="image" type="file" id="image"
+                            <div class="d-flex justify-content-center">
+                                @if (auth()->user()->image)
+                                    <img src="{{ asset('storage/' . $users->image) }}" class="img-preview img-fluid" style="width: 50%; border-radius: 50%;">
+                                @else
+                                    <img class="img-preview img-fluid" style="width: 250px; height: 250px; border-radius: 50%; overflow:hidden; object-fit: cover">
+                                @endif
+                            </div>
+                            <input class="form-control mt-4" name="image" type="file" id="image"
                                 onchange="previewImage()">
                         </div>
                     </div>

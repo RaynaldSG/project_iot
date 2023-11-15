@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" style="height: 100%">
+<html lang="en" style="">
 
 <head>
     <meta charset="utf-8">
@@ -11,7 +11,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body class="d-flex flex-column" style="height: 100%">
+<body class="d-flex flex-column" style="height: 100%;">
     @include('dashboard.component.sidebardashboard')
     @include('dashboard.component.navbardashboard')
 
