@@ -59,7 +59,7 @@
                                 onchange="previewImage()">
                         </div>
                     </div>
-                    <button class="btn btn-warning text-center" style="width: 100%" type="submit">Edit</button>
+                    <button class="btn btn-warning text-center mb-4" style="width: 100%" type="submit">Edit</button>
                 </div>
             </form>
         </div>

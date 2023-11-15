@@ -9,7 +9,7 @@
         </div>
         <a class="navbar-brand m-0" href="/dashboard" style="font-weight: 700">IoTAbs</a>
         <div class="justify-content-end d-flex" style="width: 25%" id="navbarSupportedContent">
-            <a href="/dashboard/profile"><img class="img-fluid" style="height: 30px;" src="\assets\img\dashboard\profileNav.png" alt="{{ auth()->user()->name }}"></a>
+            <a href="/dashboard/profile"><img class="img-fluid" style="height: 40px;" src="\assets\img\dashboard\profileNav.png" alt="{{ auth()->user()->name }}"></a>
         </div>
     </div>
 </nav>

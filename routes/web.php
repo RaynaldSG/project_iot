@@ -31,3 +31,7 @@ Route::get('/dashboard', function(){
 Route::get('dashboard/profile', function(){
     return view('dashboard.profile.profile', ['title' => 'IoTAbs | Profile']);
 })->middleware('auth');
+
+Route::get('dashboard/attendance', function(){
+    return view('dashboard.attendance.attendanceView', ['title' => 'IoTAbs | Attendance']);
+})->middleware('auth');
