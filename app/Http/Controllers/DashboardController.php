@@ -19,6 +19,7 @@ class DashboardController extends Controller
             'syntax' => CarbonInterface::DIFF_ABSOLUTE,
           ];
           $startTime = Carbon::parse(auth()->user()->shift->start);
+          $endTime = Carbon::parse(auth()->user()->shift->end);
 
           if($time > $startTime){
             $info = "ago";
@@ -27,7 +28,8 @@ class DashboardController extends Controller
         return view('dashboard.dashboardView', [
             'title' => 'IoTAbs | Dashboard',
             'countdown' => $time->diffForHumans(auth()->user()->shift->start, $options) . " " . $info,
-            'startTime' => $startTime
+            'startTime' => $startTime,
+            'endTime' => $endTime
         ]);
     }
 }
