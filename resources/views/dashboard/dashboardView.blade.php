@@ -57,7 +57,7 @@
                 var hours = Math.floor((interval % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 var minutes = Math.floor((interval % (1000 * 60 * 60)) / (1000 * 60));
                 var seconds = Math.floor((interval % (1000 * 60)) / 1000);
-                countdownID.innerHTML = "Shift Start: " + hours + " Hours, "+ minutes + " Minutes, " + seconds + " Seconds ago";
+                countdownID.innerHTML = "Shift Start: " + hours + " Hours, "+ minutes + " Minutes, " + seconds + " Seconds";
             }
 
             else{

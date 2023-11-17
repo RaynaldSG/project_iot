@@ -30,7 +30,8 @@ class ProfileController extends Controller
 
         if ($request->file('image')) {
             if(request()->user()->image){
-                Storage::delete(User::where('id', request()->user()->id)->image);
+                // dd(User::where('id', request()->user()->id)->get('image'));
+                Storage::delete(auth()->user()->image);
             }
 
             $validateData['image'] = request()->file('image')->store('profile-image');
