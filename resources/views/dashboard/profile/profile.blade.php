@@ -2,13 +2,18 @@
 
 @section('content')
     <div class="container d-flex justify-content-center align-items-center">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-5">
             <div class="col-lg-12">
                 <div class="d-flex justify-content-center">
-                    <img src="\assets\img\dashboard\profile.png" class="img-fluid"  style="width: 50%; border-radius: 50%" alt="profile.png">
+                    <img src=" @if (auth()->user()->image)
+                        {{ asset('storage/' . auth()->user()->image) }}
+                    @else
+                        \assets\img\dashboard\profile.png
+                    @endif
+                    " class="img-fluid"  style="width: 50%; border-radius: 50%" alt="profile.png">
                 </div>
                 <h5 class="text-center mt-2" style="font-weight: 700">PROFILE</h5>
-                <form action="/login" method="POST">
+                <form action="/dashboard/profile" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="container p-3">
                         <div class="form-floating mb-3">
@@ -49,11 +54,7 @@
                                 </div>
                             @enderror
                             <div class="d-flex justify-content-center">
-                                @if (auth()->user()->image)
-                                    <img src="{{ asset('storage/' . $users->image) }}" class="img-preview img-fluid" style="width: 50%; border-radius: 50%;">
-                                @else
                                     <img class="img-preview img-fluid" style="width: 250px; height: 250px; border-radius: 50%; overflow:hidden; object-fit: cover">
-                                @endif
                             </div>
                             <input class="form-control mt-4" name="image" type="file" id="image"
                                 onchange="previewImage()">

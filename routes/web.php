@@ -34,3 +34,4 @@ Route::get('dashboard/attendance', function(){
 
 // Profile Dashboard
 Route::get('dashboard/profile', [ProfileController::class, 'showProfile'])->middleware('auth');
+Route::post('dashboard/profile', [ProfileController::class, 'editProfile'])->middleware('auth');
