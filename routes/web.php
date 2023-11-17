@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginRegisterController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,14 +26,11 @@ Route::get('/logout', [LoginRegisterController::class, 'logout'])->middleware('a
 
 
 // Dashboard
-Route::get('/dashboard', function(){
-    return view('dashboard.dashboardView', ['title' => 'IoTAbs | Dashboard']);
-})->middleware('auth');
-
-Route::get('dashboard/profile', function(){
-    return view('dashboard.profile.profile', ['title' => 'IoTAbs | Profile']);
-})->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'dashboardC'])->middleware('auth');
 
 Route::get('dashboard/attendance', function(){
     return view('dashboard.attendance.attendanceView', ['title' => 'IoTAbs | Attendance']);
 })->middleware('auth');
+
+// Profile Dashboard
+Route::get('dashboard/profile', [ProfileController::class, 'showProfile'])->middleware('auth');

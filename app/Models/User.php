@@ -50,7 +50,7 @@ class User extends Authenticatable
     ];
 
     public function shift(){
-        return $this->hasOne(Shift::class);
+        return $this->belongsTo(Shift::class);
     }
 
     public function log(){

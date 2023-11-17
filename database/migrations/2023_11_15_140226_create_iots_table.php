@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('shifts', function (Blueprint $table) {
+        Schema::create('iots', function (Blueprint $table) {
             $table->id();
-            $table->time('start');
-            $table->time('end');
+            $table->string('name');
+            $table->string('api_key');
+            $table->string('card_id')->nullable();
+            $table->string('status')->default('idle');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('shifts');
+        Schema::dropIfExists('iots');
     }
 };

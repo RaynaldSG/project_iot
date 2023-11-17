@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Log;
 use App\Models\Shift;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -33,7 +35,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Raynald Sage K.',
             'gender' => 'male',
             'card_id' => '777',
-            'is_admin' => true
+            'is_admin' => true,
+            'shift_id' => 1
         ]);
 
         User::create([
@@ -43,6 +46,13 @@ class DatabaseSeeder extends Seeder
             'gender' => 'female',
             'card_id' => '1',
             'is_admin' => true
+        ]);
+
+        Log::create([
+            'card_id' => "777",
+            'user_id' => 1,
+            'name' => "Raynald",
+            'out' => Carbon::now()->addHours(7),
         ]);
     }
 }

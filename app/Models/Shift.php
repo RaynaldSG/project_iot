@@ -12,4 +12,8 @@ class Shift extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function user(){
+        return $this->hasMany(User::class);
+    }
 }
