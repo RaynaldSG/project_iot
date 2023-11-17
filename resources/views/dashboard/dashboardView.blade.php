@@ -21,27 +21,54 @@
 
     <script>
         const countdownID = document.getElementById("countdown");
-        const temp = "<?= $startTime?>";
-        const time = new Date(temp).getTime();
+        const tempStart = "<?= $startTime?>";
+        const tempEnd  = "<?= $endTime?>";
+        const timeS = new Date(tempStart).getTime();
+        const timeE = new Date(tempEnd).getTime();
+
 
         var x = setInterval(function () {
             var now = new Date().getTime();
-            var interval = time - now;
+            var dateNow = new Date();
+            var interval = timeS - now;
+            var checkEnd = timeE - now;
 
-            var hours = Math.floor((interval % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((interval % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((interval % (1000 * 60)) / 1000);
+            if(interval > 0){
+                var hours = Math.floor((interval % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((interval % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((interval % (1000 * 60)) / 1000);
+                countdownID.innerHTML = "Shift Start: " + hours + " Hours, "+ minutes + " Minutes, " + seconds + " Seconds ";
+            }
 
-            countdownID.innerHTML = "Shift Start: " + hours + " Hours, "+ minutes + " Minutes, " + seconds + " Seconds ";
+            else if (interval < 0 && checkEnd < 0) {
+                var date = dateNow.getDate() - 1;
+                var month = dateNow.getMonth() + 1;
+                var year = dateNow.getFullYear();
+                var hour = dateNow.getHours();
+                var min = dateNow.getMinutes();
+                var sec = dateNow.getSeconds();
 
-            if (interval < 0) {
-                var interval = Math.abs(time - now);
+                var strDatetime = year + '-' + month + '-' + date + ' ' + hour+ ':' + min + ':' + sec;
+                var dateTimeCount = new Date(strDatetime);
+
+                interval = timeS - dateTimeCount.getTime();
+                console.log(interval);
 
                 var hours = Math.floor((interval % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 var minutes = Math.floor((interval % (1000 * 60 * 60)) / (1000 * 60));
                 var seconds = Math.floor((interval % (1000 * 60)) / 1000);
                 countdownID.innerHTML = "Shift Start: " + hours + " Hours, "+ minutes + " Minutes, " + seconds + " Seconds ago";
             }
+
+            else{
+                var interval = Math.abs(timeE - now);
+                var hours = Math.floor((interval % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((interval % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((interval % (1000 * 60)) / 1000);
+
+                countdownID.innerHTML = "Shift End: " + hours + " Hours, "+ minutes + " Minutes, " + seconds + " Seconds ";
+            }
+
         }, 1000);
 
     </script>
