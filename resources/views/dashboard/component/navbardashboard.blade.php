@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary"
-    style="background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%)">
+    style="background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%); width:100%">
     <div class="container-fluid">
         <div class="justify-content-start align-items-center" style="width: 25%">
             <a class="btn border-white border-1" data-bs-toggle="offcanvas" href="#sidebar" role="button"

@@ -52,7 +52,16 @@ class DatabaseSeeder extends Seeder
             'card_id' => "777",
             'user_id' => 1,
             'name' => "Raynald",
-            'out' => Carbon::now()->addHours(7),
+            'in' => Carbon::now()->subDay()->subHours(10),
+            'out' => Carbon::now()->subDay()->addHours(2),
         ]);
+
+        Log::create([
+            'card_id' => "777",
+            'user_id' => 1,
+            'name' => "Raynald",
+            'out' => Carbon::now()->addHours(2),
+        ]);
+
     }
 }
