@@ -12,19 +12,19 @@ class LogControllerR extends Controller
      */
     public function index()
     {
-        if(auth()->user()->is_admin && request()->server('REQUEST_URI') == '/dashboard/log'){
-            $logs = Log::latest()->paginate(10);
-            return view('dashboard.attendance.attendanceView',[
-                'title' => 'IoTAbs | Attendance',
-                'logs' => $logs
-            ]);
-        }
-        else{
+
             return view('dashboard.attendance.attendanceView',[
                 'title' => 'IoTAbs | Attendance',
                 'logs' => Log::where('user_id', auth()->user()->id)->latest()->paginate(10),
             ]);
-        }
+    }
+
+    public function indexAdmin(){
+        $logs = Log::orderBy('updated_at', 'desc')->paginate(10);
+            return view('dashboard.attendance.attendanceView',[
+                'title' => 'IoTAbs | Attendance',
+                'logs' => $logs
+            ]);
     }
 
     /**

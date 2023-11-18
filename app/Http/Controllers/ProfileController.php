@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Iot;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -12,6 +13,10 @@ class ProfileController extends Controller
     #profile view
     public function showProfile()
     {
+        $iot = Iot::where('id', 1)->get()->first()->update([
+            'status' => 'register',
+        ]);
+
         return view('dashboard.profile.profile', [
             'title' => 'IoTAbs | Profile'
         ]);
@@ -23,7 +28,7 @@ class ProfileController extends Controller
         $validateData = $request->validate([
             'name' => 'required',
             'gender' => 'required',
-            'card_id' => 'required',
+            'card_id' => 'required|unique:users,card_id,' . $request->user()->id,
             'image' => 'image'
         ]);
 

@@ -47,9 +47,12 @@ Route::resource('/dashboard/shift', ShiftController::class)->except('show')->mid
 Route::resource('/dashboard/user', UserControllerR::class)->except('create|show|store')->middleware('admin');
 
 //Log
-Route::get('/dashboard/log', [LogControllerR::class, 'index'])->middleware('admin');
+Route::get('/dashboard/log', [LogControllerR::class, 'indexAdmin'])->middleware('admin');
 
 
 
 //IOT REQUEST ROUTE
 Route::get('/iot/device', [IotController::class, 'iotInit']);
+Route::get('/iot/device/input', [IotController::class, 'iotCardReadI']);
+Route::get('/iot/device/inputR', [IotController::class, 'iotCardReadR']);
+Route::get('/iot/client/get', [IotController::class, 'getCardID']);

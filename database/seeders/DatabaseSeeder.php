@@ -66,6 +66,7 @@ class DatabaseSeeder extends Seeder
             'shift_end' => "17:00:00",
             'in' => Carbon::now()->subDay()->subHours(10),
             'out' => Carbon::now()->subDay()->addHours(2),
+            'created_at' => Carbon::now()->subDay(),
         ]);
 
         Log::create([
@@ -75,6 +76,7 @@ class DatabaseSeeder extends Seeder
             'shift_start' => "10:00:00",
             'shift_end' => "17:00:00",
             'out' => Carbon::now()->addHours(2),
+            'created_at' => Carbon::now()->subDays(2),
         ]);
 
         Log::create([
@@ -84,6 +86,7 @@ class DatabaseSeeder extends Seeder
             'shift_start' => "10:00:00",
             'shift_end' => "17:00:00",
             'out' => Carbon::now()->addHours(2),
+            'created_at' => Carbon::now()->subDay(),
         ]);
 
         Iot::create([

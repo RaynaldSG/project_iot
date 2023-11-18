@@ -10,6 +10,7 @@ class DashboardController extends Controller
 {
     public function dashboardC()
     {
+        IotController::iotChangeIdle();
         $time = Carbon::now();
         $info = "";
 

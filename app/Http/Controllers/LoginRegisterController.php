@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Iot;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,14 +10,21 @@ use Illuminate\Support\Facades\Auth;
 class LoginRegisterController extends Controller
 {
     public function login(){
+        Iot::where('id', 1)->get()->first()->update([
+            'status' => 'idle',
+            'card_id' => null
+        ]);
         return view('login.login', [
-            'title' => 'login'
+            'title' => 'IoTAbs | Login'
         ]);
     }
 
     public function register(){
+        Iot::where('id', 1)->get()->first()->update([
+            'status' => 'register',
+        ]);
         return view('login.register', [
-            'title' => 'Register'
+            'title' => 'IoTAbs | Register'
         ]);
     }
 

@@ -63,6 +63,10 @@
     </div>
     </div>
     <script>
+        const cardIDForm = document.getElementById("card_id");
+        const url = 'http://127.0.0.1:8000/iot/client/get'
+        var cardID = "";
+
         function previewImage() {
             const image = document.querySelector('#image');
             const imgPrev = document.querySelector('.img-preview');
@@ -75,6 +79,27 @@
             oFReader.onload = function(oFREvent) {
                 imgPrev.src = oFREvent.target.result;
             }
+        }
+
+        var x = setInterval(function() {
+            cardID = httpGet(url);
+            console.log(cardID);
+
+            if (!cardIDForm.value.trim()) {
+                cardIDForm.value = cardID
+            }
+
+        }, 1000);
+
+        function httpGet(url) {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", url, false); // false for synchronous request
+            xmlHttp.send(null);
+            return xmlHttp.responseText;
+        }
+
+        window.onload = function() {
+            return <?= App\Http\Controllers\IotController::iotChangeRegis() ?>;
         }
     </script>
 @endsection
