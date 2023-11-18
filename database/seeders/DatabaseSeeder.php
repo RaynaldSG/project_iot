@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Iot;
 use App\Models\Log;
 use App\Models\Shift;
 use App\Models\User;
@@ -83,6 +84,11 @@ class DatabaseSeeder extends Seeder
             'shift_start' => "10:00:00",
             'shift_end' => "17:00:00",
             'out' => Carbon::now()->addHours(2),
+        ]);
+
+        Iot::create([
+            'name' => 'ESP8266',
+            'api_key' => 'rayIoT1234567',
         ]);
 
     }

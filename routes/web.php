@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\IotController;
 use App\Http\Controllers\LogControllerR;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\ProfileController;
@@ -47,3 +48,8 @@ Route::resource('/dashboard/user', UserControllerR::class)->except('create|show|
 
 //Log
 Route::get('/dashboard/log', [LogControllerR::class, 'index'])->middleware('admin');
+
+
+
+//IOT REQUEST ROUTE
+Route::get('/iot/device', [IotController::class, 'iotInit']);
