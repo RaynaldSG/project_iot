@@ -5,9 +5,9 @@
     <div class="row justify-content-center align-items-start" style="height: 100%">
         <div class="col-lg-7">
             @if (session()->has('success'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('success') }}
-                </div>
+                <p class="card text-center mx-5 mt-3 mb-1"
+                    style="font-weight: 700; background-color:rgba(17, 255, 0, 0.6)">{{ session('success') }}
+                </p>
             @endif
             <table class="table table-striped text-center mt-5 table-responsive">
                 <thead>

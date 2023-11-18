@@ -74,7 +74,6 @@ class IotController extends Controller
             if(Carbon::create(Log::where('user_id', $user->id)->get()->last()->created_at)->isSameDay($timeNow)){
                 $log = Log::where('user_id', $user->id)->get()->last();
                 if($log->out == null){
-                    echo "tes";
                     $log->update([
                         'updated_at' => $timeNow,
                         'out' => $timeNow,
