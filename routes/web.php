@@ -5,6 +5,7 @@ use App\Http\Controllers\LogControllerR;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShiftController;
+use App\Http\Controllers\UserControllerR;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,5 +40,10 @@ Route::get('/dashboard/attendance', [LogControllerR::class, 'index'])->middlewar
 
 //ADMIN
 //shift
-
 Route::resource('/dashboard/shift', ShiftController::class)->except('show')->middleware('admin');
+
+//User
+Route::resource('/dashboard/user', UserControllerR::class)->except('create|show|store')->middleware('admin');
+
+//Log
+Route::get('/dashboard/log', [LogControllerR::class, 'index'])->middleware('admin');
