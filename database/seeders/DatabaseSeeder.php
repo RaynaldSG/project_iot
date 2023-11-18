@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Shift::create([
+            'name' => 'Shift-1',
             'start' => '10:00:00',
             'end' => '17:00:00'
         ]);
@@ -46,6 +47,14 @@ class DatabaseSeeder extends Seeder
             'gender' => 'female',
             'card_id' => '1',
             'is_admin' => true
+        ]);
+
+        User::create([
+            'username' => 'test',
+            'password' => '1234',
+            'name' => 'Test',
+            'gender' => 'male',
+            'card_id' => '9999',
         ]);
 
         Log::create([

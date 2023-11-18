@@ -14,8 +14,10 @@
     <div class="row justify-content-center ms-2 mt-5 pb-2" style="">
         <div class="text-center mt-2">
             <h1>Selamat Datang, {{ auth()->user()->name }}</h1>
+            @if (auth()->user()->shift_id != null)
             <h3>Shift Time: {{ auth()->user()->shift->start }} - {{ auth()->user()->shift->end }}</h3>
             <h4 id="countdown">Shift Start: {{ $countdown }}</h4>
+            @endif
         </div>
     </div>
 
@@ -51,13 +53,22 @@
                 var strDatetime = year + '-' + month + '-' + date + ' ' + hour+ ':' + min + ':' + sec;
                 var dateTimeCount = new Date(strDatetime);
 
-                interval = timeS - dateTimeCount.getTime();
-                console.log(interval);
+                if(timeE < timeS){
+                    interval = timeE - dateTimeCount.getTime();
 
-                var hours = Math.floor((interval % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((interval % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((interval % (1000 * 60)) / 1000);
-                countdownID.innerHTML = "Shift Start: " + hours + " Hours, "+ minutes + " Minutes, " + seconds + " Seconds";
+                    var hours = Math.floor((interval % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((interval % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((interval % (1000 * 60)) / 1000);
+                    countdownID.innerHTML = "Shift End: " + hours + " Hours, "+ minutes + " Minutes, " + seconds + " Seconds ";
+                }
+                else{
+                    interval = timeS - dateTimeCount.getTime();
+
+                    var hours = Math.floor((interval % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((interval % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((interval % (1000 * 60)) / 1000);
+                    countdownID.innerHTML = "Shift Start: " + hours + " Hours, "+ minutes + " Minutes, " + seconds + " Seconds";
+                }
             }
 
             else{

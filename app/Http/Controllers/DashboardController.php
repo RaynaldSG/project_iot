@@ -13,21 +13,29 @@ class DashboardController extends Controller
         $time = Carbon::now();
         $info = "";
 
-        $options = [
-            'join' => ', ',
-            'parts' => 3,
-            'syntax' => CarbonInterface::DIFF_ABSOLUTE,
-          ];
-          $startTime = Carbon::parse(auth()->user()->shift->start);
-          $endTime = Carbon::parse(auth()->user()->shift->end);
+        if(auth()->user()->shift_id != null){
+            $options = [
+                'join' => ', ',
+                'parts' => 3,
+                'syntax' => CarbonInterface::DIFF_ABSOLUTE,
+              ];
+              $startTime = Carbon::parse(auth()->user()->shift->start);
+              $endTime = Carbon::parse(auth()->user()->shift->end);
 
-          if($time > $startTime){
-            $info = "ago";
-          }
+              if($time > $startTime){
+                $info = "ago";
+              }
+              $countdown = $time->diffForHumans(auth()->user()->shift->start, $options) . " " . $info;
+        }
+        else{
+            $startTime = "00:00:00";
+            $endTime = "00:00:00";
+            $countdown = "";
+        }
 
         return view('dashboard.dashboardView', [
             'title' => 'IoTAbs | Dashboard',
-            'countdown' => $time->diffForHumans(auth()->user()->shift->start, $options) . " " . $info,
+            'countdown' => $countdown,
             'startTime' => $startTime,
             'endTime' => $endTime
         ]);

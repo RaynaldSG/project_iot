@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum('gender', ['male', 'female']);
             $table->string('image')->nullable();
             $table->string('card_id')->unique();
-            $table->foreignId('shift_id')->nullable();
+            $table->foreignId('shift_id')->nullable()->nullOnDelete();
             $table->boolean('is_admin')->default(false);
             $table->timestamps();
         });
