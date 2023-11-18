@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Shift::create([
+            'name' => 'Shift-1',
             'start' => '10:00:00',
             'end' => '17:00:00'
         ]);
@@ -48,11 +49,41 @@ class DatabaseSeeder extends Seeder
             'is_admin' => true
         ]);
 
+        User::create([
+            'username' => 'test',
+            'password' => '1234',
+            'name' => 'Test',
+            'gender' => 'male',
+            'card_id' => '9999',
+        ]);
+
         Log::create([
             'card_id' => "777",
             'user_id' => 1,
             'name' => "Raynald",
-            'out' => Carbon::now()->addHours(7),
+            'shift_start' => "10:00:00",
+            'shift_end' => "17:00:00",
+            'in' => Carbon::now()->subDay()->subHours(10),
+            'out' => Carbon::now()->subDay()->addHours(2),
         ]);
+
+        Log::create([
+            'card_id' => "777",
+            'user_id' => 1,
+            'name' => "Raynald",
+            'shift_start' => "10:00:00",
+            'shift_end' => "17:00:00",
+            'out' => Carbon::now()->addHours(2),
+        ]);
+
+        Log::create([
+            'card_id' => "9999",
+            'user_id' => 3,
+            'name' => "Test",
+            'shift_start' => "10:00:00",
+            'shift_end' => "17:00:00",
+            'out' => Carbon::now()->addHours(2),
+        ]);
+
     }
 }

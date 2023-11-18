@@ -15,8 +15,10 @@ return new class extends Migration
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
             $table->string('card_id');
-            $table->foreignId('user_id')->nullable();
+            $table->foreignId('user_id')->nullable()->nullOnDelete();
             $table->string('name')->default('unknown');
+            $table->time('shift_start')->nullable();
+            $table->time('shift_end')->nullable();
             $table->timestamp('in')->default(Carbon::now());
             $table->timestamp('out')->nullable();
             $table->timestamps();
