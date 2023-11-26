@@ -75,6 +75,10 @@ class IotController extends Controller
             $user = User::where('card_id', $iot->card_id)->get()->first();
             $timeNow = Carbon::now();
 
+            if($user->shift_id == null){
+                return $user->name .";Tidak Ada Shift";
+            }
+
             if (Log::where('user_id', $user->id)->count() < 1) {
                 Log::create([
                     'card_id' => $iot->card_id,

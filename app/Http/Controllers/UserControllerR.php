@@ -63,7 +63,7 @@ class UserControllerR extends Controller
         $validateData = $request->validate([
             'name' => 'required',
             'gender' => 'required',
-            'card_id' => 'required'
+            'card_id' => 'required|unique:users,card_id,' . $user->id,
         ]);
         if ($request->shift) {
             if ($request->shift == 'null') {

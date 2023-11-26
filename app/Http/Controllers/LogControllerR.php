@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Log;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class LogControllerR extends Controller
@@ -12,19 +13,19 @@ class LogControllerR extends Controller
      */
     public function index()
     {
-
-            return view('dashboard.attendance.attendanceView',[
-                'title' => 'IoTAbs | Attendance',
-                'logs' => Log::where('user_id', auth()->user()->id)->latest()->paginate(10),
-            ]);
+        return view('dashboard.attendance.attendanceView', [
+            'title' => 'IoTAbs | Attendance',
+            'logs' => Log::where('user_id', auth()->user()->id)->latest()->paginate(10),
+        ]);
     }
 
-    public function indexAdmin(){
+    public function indexAdmin()
+    {
         $logs = Log::orderBy('updated_at', 'desc')->paginate(10);
-            return view('dashboard.attendance.attendanceView',[
-                'title' => 'IoTAbs | Attendance',
-                'logs' => $logs
-            ]);
+        return view('dashboard.attendance.attendanceView', [
+            'title' => 'IoTAbs | Attendance',
+            'logs' => $logs
+        ]);
     }
 
     /**
