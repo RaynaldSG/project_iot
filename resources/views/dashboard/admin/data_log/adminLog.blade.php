@@ -1,4 +1,5 @@
 @extends('dashboard.layout.layoutdashboard')
+{{-- Tidak terpakai, sudah pake jadi 1 sama attendanceView --}}
 
 @section('content')
     <h3 class="text-center mt-5 mb-5">Log</h3>

@@ -71,9 +71,9 @@ class IotController extends Controller
     private function makeLog($id)
     {
         $iot = Iot::where('id', $id)->get()->first();
+        $timeNow = Carbon::now();
         if (User::where('card_id', $iot->card_id)->exists()) {
             $user = User::where('card_id', $iot->card_id)->get()->first();
-            $timeNow = Carbon::now();
 
             if($user->shift_id == null){
                 return $user->name .";Tidak Ada Shift";
@@ -117,6 +117,7 @@ class IotController extends Controller
         } else {
             Log::create([
                 'card_id' => $iot->card_id,
+                'in' => $timeNow
             ]);
             return 'User Unknown';
         }

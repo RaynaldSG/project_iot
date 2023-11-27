@@ -30,24 +30,24 @@ Route::get('/logout', [LoginRegisterController::class, 'logout'])->middleware('a
 
 
 // Dashboard
-Route::get('/dashboard', [DashboardController::class, 'dashboardC'])->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'dashboardC'])->middleware(['auth', 'IoTIdle']);
 
 // Profile Dashboard
 Route::get('/dashboard/profile', [ProfileController::class, 'showProfile'])->middleware('auth');
 Route::post('/dashboard/profile', [ProfileController::class, 'editProfile'])->middleware('auth');
 
 // Attendance Log
-Route::get('/dashboard/attendance', [LogControllerR::class, 'index'])->middleware('auth');
+Route::get('/dashboard/attendance', [LogControllerR::class, 'index'])->middleware(['auth', 'IoTIdle']);
 
 //ADMIN
 //shift
-Route::resource('/dashboard/shift', ShiftController::class)->except('show')->middleware('admin');
+Route::resource('/dashboard/shift', ShiftController::class)->except('show')->middleware(['admin', 'IoTIdle']);
 
 //User
-Route::resource('/dashboard/user', UserControllerR::class)->except('create|show|store')->middleware('admin');
+Route::resource('/dashboard/user', UserControllerR::class)->except('create|show|store')->middleware(['admin', 'IoTIdle']);
 
 //Log
-Route::get('/dashboard/log', [LogControllerR::class, 'indexAdmin'])->middleware('admin');
+Route::get('/dashboard/log', [LogControllerR::class, 'indexAdmin'])->middleware(['admin', 'IoTIdle']);
 
 
 

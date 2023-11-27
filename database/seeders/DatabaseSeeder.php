@@ -90,8 +90,8 @@ class DatabaseSeeder extends Seeder
             'card_id' => "9999",
             'user_id' => 3,
             'name' => "Test",
-            'start' => '9:00:00',
-            'end' => '17:00:00',
+            'shift_start' => "9:00:00",
+            'shift_end' => "17:00:00",
             'out' => Carbon::now()->addHours(2),
             'created_at' => Carbon::now()->subDay(),
         ]);

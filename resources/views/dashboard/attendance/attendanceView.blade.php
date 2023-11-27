@@ -27,9 +27,14 @@
                             <td>{{ $log->name }}</td>
                             <td>{{ $log->shift_start . ' - ' . $log->shift_end }}</td>
                             <td>{{ $Carbon::parse($log->in)->toTimeString() }}</td>
-                            <td>{{ $Carbon::parse($log->out)->toTimeString() }}</td>
-                            <td>{{ $Carbon::parse($log->in)->subMinutes(30)->format('His') <= $Carbon::parse($log->shift_start)->format('His')? 'Tepat Waktu': 'Terlambat' }}
-                            </td>
+                            @if ($log->shift_start == null)
+                                <td>-</td>
+                                <td>-</td>
+                            @else
+                                <td>{{ $Carbon::parse($log->out)->toTimeString() }}</td>
+                                <td>{{ $Carbon::parse($log->in)->subMinutes(30)->format('His') <= $Carbon::parse($log->shift_start)->format('His')? 'Tepat Waktu': 'Terlambat' }}
+                                </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>
