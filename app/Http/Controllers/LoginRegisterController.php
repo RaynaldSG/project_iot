@@ -48,7 +48,7 @@ class LoginRegisterController extends Controller
             'password' =>'required',
             'name' => 'required',
             'gender' => 'required',
-            'card_id' => 'required|unique:users',
+            'card_id' => 'required|unique:users,card_id',
         ]);
 
         User::create($dataValidation);
